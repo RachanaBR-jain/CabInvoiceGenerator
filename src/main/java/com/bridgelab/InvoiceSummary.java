@@ -4,7 +4,7 @@ public class InvoiceSummary {
 
     private double totalFare;
     private int rides;
-    private Object averageFare;
+    private double averageFare;
 
     public InvoiceSummary(double totalFare, int rides) {
         this.totalFare = totalFare;

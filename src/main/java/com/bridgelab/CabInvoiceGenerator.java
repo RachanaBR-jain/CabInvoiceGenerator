@@ -1,6 +1,7 @@
 package com.bridgelab;
 
 public class CabInvoiceGenerator {
+    RideHistory ridesHistory = new RideHistory();
     private static final double MINIMUM_COST_PER_KM = 10;
     private static final int MINIMUM_COST_PER_MIN = 1;
     private static final double MINIMUM_FARE = 5;
@@ -25,6 +26,16 @@ public class CabInvoiceGenerator {
     public InvoiceSummary calculateInvoiceSummary(Ride[] rides) {
         double fare = calculateFare(rides);
         return new InvoiceSummary(fare, rides.length);
+    }
+
+    public void addRidesForPerticularUser(String userId, Ride[] rides) {
+        ridesHistory.addRidesForUserID(userId, rides);
+
+    }
+
+    public InvoiceSummary getInvoiceSummary(String userId) {
+        Ride[] rideData = ridesHistory.getRidesHistory(userId);
+        return calculateInvoiceSummary(rideData);
     }
 }
 
