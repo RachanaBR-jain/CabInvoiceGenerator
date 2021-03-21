@@ -17,9 +17,17 @@ public class CabInvoiceGenerator {
             totalFare = totalFare + calculateNormalFare(ride.getDistance(), ride.getTime());
             System.out.println(totalFare);
         }
-        System.out.println("Total fare of multiple Ride="+totalFare);
+        System.out.println("Total fare of multiple Ride=" + totalFare);
         return totalFare;
     }
 
+
+    public InvoiceSummary calculateInvoiceSummary(Ride[] rides) {
+        double fare = calculateFare(rides);
+        return new InvoiceSummary(fare, rides.length);
+    }
 }
+
+
+
 
