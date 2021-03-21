@@ -1,9 +1,12 @@
 package com.bridgelabs;
 
 import com.bridgelab.CabInvoiceGenerator;
+import com.bridgelab.Ride;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 public class CabInvoiceGeneratorTesting {
 
@@ -30,5 +33,13 @@ public class CabInvoiceGeneratorTesting {
         double fare = invoice.calculateNormalFare(distance, time);
         System.out.println(fare);
         Assertions.assertEquals(5, fare, 0.0);
+    }
+    @Test
+    public void given_multipleRide_shouldreturn_totalfare() {
+        Ride[] rides = { new Ride(2.0, 5, "NORMAL"),
+                new Ride(4.0, 5, "NORMAL"),
+                new Ride(7.0, 3, "NORMAL") };
+        double fare = invoice.calculateFare(rides);
+        Assertions.assertEquals(143.0, fare);
     }
 }
