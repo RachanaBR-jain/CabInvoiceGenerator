@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class CabInvoiceGeneratorTesting {
 
-    CabInvoiceGenerator invoice =null;
+    CabInvoiceGenerator invoice = null;
 
     @BeforeEach
     public void initialize_object() {
@@ -15,7 +15,7 @@ public class CabInvoiceGeneratorTesting {
     }
 
     @Test
-    public void given_distance_Generate_total_fare() {
+    public void givenDistanceAndTime_Generate_total_fareOfJourney() {
         double distance = 5.0;
         int time = 20;
         double fare = invoice.calculateNormalFare(distance, time);
@@ -24,7 +24,7 @@ public class CabInvoiceGeneratorTesting {
     }
 
     @Test
-    public void given_smalldistance_shouldfail_minimumfare() {
+    public void givenSmalldistanceAndTime_shouldReturn_MinimumFare() {
         double distance = 0.2;
         int time = 2;
         double fare = invoice.calculateNormalFare(distance, time);
